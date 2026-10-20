@@ -40,11 +40,12 @@ Sin las variables de Supabase, la web arranca en "modo demo": muestra un aviso y
 1. Crea un proyecto en [supabase.com](https://supabase.com).
 2. Abre **SQL Editor**, pega el contenido de [`supabase/schema.sql`](supabase/schema.sql) y ejecútalo. El script crea:
    - la tabla `products` con sus índices, el trigger de `updated_at` y la vista de categorías;
-   - las políticas **RLS**: el público solo lee productos activos y los usuarios autenticados tienen acceso total;
+   - las políticas **RLS**: el público solo lee productos activos y únicamente el **rol admin** puede escribir;
    - el bucket público **`productos`** (máximo 5 MB, solo imágenes) con sus políticas de Storage.
-3. En **Project Settings → API**, copia la URL y la *publishable key* a `.env.local`.
-4. En **Authentication → Users → Add user**, crea el usuario administrador con correo y contraseña.
-5. Recomendado: en **Authentication → Sign In / Providers**, desactiva *Allow new users to sign up*. Así nadie más puede crearse una cuenta, y cualquier usuario autenticado es admin.
+3. Abre [`supabase/admin.sql`](supabase/admin.sql), cambia el correo y la contraseña, y ejecútalo en el SQL Editor. Crea el usuario admin (o actualiza su contraseña si ya existe).
+4. En **Project Settings → API**, copia la URL y la *publishable key* a `.env.local`.
+
+**Admin solo por SQL:** el panel exige `app_metadata.role = 'admin'`, un dato que solo se puede asignar desde SQL. Si alguien se registra por su cuenta, igual no entra al panel ni puede modificar datos. Opcionalmente puedes desactivar *Allow new users to sign up* en Authentication.
 
 > Si usas otro nombre de bucket, cámbialo en `schema.sql` y en `NEXT_PUBLIC_SUPABASE_BUCKET`.
 
@@ -56,6 +57,7 @@ Importa el repositorio y agrega las mismas variables de entorno. No hace falta n
 
 ```
 supabase/schema.sql          Tablas, RLS, bucket y políticas
+supabase/admin.sql           Crear / actualizar el usuario admin
 src/proxy.ts                 Refresca la sesión y protege /admin (antes "middleware")
 src/config/site.ts           Nombre de marca, moneda, WhatsApp, límites
 src/lib/supabase/            Clientes: sesión (server), público (cacheable), navegador

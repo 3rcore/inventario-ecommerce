@@ -52,21 +52,29 @@ with (security_invoker = true) as
   group by category
   order by category;
 
+-- ---------- Rol admin ----------
+-- Un usuario es admin si su app_metadata tiene role = 'admin' (ver supabase/admin.sql).
+-- app_metadata solo se puede modificar desde SQL / service_role, nunca desde el navegador.
+create or replace function public.is_admin()
+returns boolean language sql stable as $$
+  select coalesce(auth.jwt() -> 'app_metadata' ->> 'role', '') = 'admin';
+$$;
+
 -- ---------- Row Level Security ----------
 alter table public.products enable row level security;
 
 drop policy if exists "Público ve productos activos" on public.products;
 create policy "Público ve productos activos"
   on public.products for select
-  to anon
-  using (is_active);
+  to anon, authenticated
+  using (is_active or public.is_admin());
 
 drop policy if exists "Admins gestionan productos" on public.products;
 create policy "Admins gestionan productos"
   on public.products for all
   to authenticated
-  using (true)
-  with check (true);
+  using (public.is_admin())
+  with check (public.is_admin());
 
 -- =============================================================
 -- Storage: bucket público para imágenes de productos
@@ -87,14 +95,14 @@ create policy "Imágenes de productos: lectura pública"
 drop policy if exists "Imágenes de productos: admins suben" on storage.objects;
 create policy "Imágenes de productos: admins suben"
   on storage.objects for insert to authenticated
-  with check (bucket_id = 'productos');
+  with check (bucket_id = 'productos' and public.is_admin());
 
 drop policy if exists "Imágenes de productos: admins actualizan" on storage.objects;
 create policy "Imágenes de productos: admins actualizan"
   on storage.objects for update to authenticated
-  using (bucket_id = 'productos');
+  using (bucket_id = 'productos' and public.is_admin());
 
 drop policy if exists "Imágenes de productos: admins eliminan" on storage.objects;
 create policy "Imágenes de productos: admins eliminan"
   on storage.objects for delete to authenticated
-  using (bucket_id = 'productos');
+  using (bucket_id = 'productos' and public.is_admin());

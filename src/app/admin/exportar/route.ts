@@ -1,4 +1,5 @@
 import Papa from "papaparse";
+import { isAdmin } from "@/lib/auth";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
 import { createSessionClient } from "@/lib/supabase/server";
 import type { Product } from "@/lib/products/types";
@@ -13,7 +14,7 @@ export async function GET() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) return new Response("No autorizado", { status: 401 });
+  if (!isAdmin(user)) return new Response("No autorizado", { status: 401 });
 
   const products: Product[] = [];
   for (let from = 0; ; from += PAGE) {

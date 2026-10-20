@@ -1,5 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { isAdmin } from "@/lib/auth";
 import { SUPABASE_KEY, SUPABASE_URL, isSupabaseConfigured } from "./env";
 
 /**
@@ -27,14 +28,14 @@ export async function updateSession(request: NextRequest) {
 
   const { pathname } = request.nextUrl;
 
-  if (!user && pathname.startsWith("/admin")) {
+  if (!isAdmin(user) && pathname.startsWith("/admin")) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     url.search = `?next=${encodeURIComponent(pathname)}`;
     return NextResponse.redirect(url);
   }
 
-  if (user && pathname === "/login") {
+  if (isAdmin(user) && pathname === "/login") {
     const url = request.nextUrl.clone();
     url.pathname = "/admin";
     url.search = "";

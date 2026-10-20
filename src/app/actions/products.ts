@@ -2,6 +2,7 @@
 
 import { updateTag } from "next/cache";
 import { redirect } from "next/navigation";
+import { isAdmin } from "@/lib/auth";
 import { PRODUCTS_TAG } from "@/lib/products/queries";
 import { productSlug } from "@/lib/products/format";
 import { fieldErrors, importBatchSchema, productInputSchema, type ProductInput } from "@/lib/products/schema";
@@ -27,6 +28,7 @@ async function requireAdmin() {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) throw new Error("Tu sesión expiró. Vuelve a iniciar sesión.");
+  if (!isAdmin(user)) throw new Error("Tu usuario no tiene permisos de administrador.");
   return supabase;
 }
 

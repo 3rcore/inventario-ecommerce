@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { ExternalLink } from "lucide-react";
 import { signOut } from "@/app/actions/auth";
 import { AdminNav } from "@/components/admin/AdminNav";
+import { isAdmin } from "@/lib/auth";
 import { SetupNotice } from "@/components/ui/SetupNotice";
 import { siteConfig } from "@/config/site";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
@@ -49,7 +50,7 @@ async function RequireSession({ children }: { children: React.ReactNode }) {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) redirect("/login");
+  if (!isAdmin(user)) redirect("/login");
   return children;
 }
 
@@ -59,7 +60,7 @@ async function UserMenu() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) return null;
+  if (!isAdmin(user)) return null;
 
   return (
     <form action={signOut} className="flex items-center gap-3">
