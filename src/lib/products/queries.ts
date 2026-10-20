@@ -86,6 +86,22 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
   return data as Product | null;
 }
 
+export async function getLatestProducts(limit: number): Promise<Product[]> {
+  "use cache";
+  cacheTag(PRODUCTS_TAG);
+  cacheLife("minutes");
+
+  if (!isSupabaseConfigured) return [];
+  const { data, error } = await createPublicClient()
+    .from("products")
+    .select(CARD_COLUMNS)
+    .eq("is_active", true)
+    .order("created_at", { ascending: false })
+    .limit(limit);
+  if (error) throw new Error(`No se pudieron cargar las novedades: ${error.message}`);
+  return (data ?? []) as Product[];
+}
+
 export async function getRelatedProducts(category: string, excludeId: string): Promise<Product[]> {
   "use cache";
   cacheTag(PRODUCTS_TAG);

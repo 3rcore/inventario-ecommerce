@@ -37,6 +37,9 @@ export default function AdminLayout({ children }: LayoutProps<"/admin">) {
             </Suspense>
           </div>
         </div>
+        <div className="wrap border-t border-line py-2.5 md:hidden">
+          <AdminNav className="flex overflow-x-auto whitespace-nowrap" />
+        </div>
       </header>
       <main className="wrap flex-1 py-8">
         <Suspense fallback={<div className="h-64 animate-pulse rounded-sm bg-surface" />}>

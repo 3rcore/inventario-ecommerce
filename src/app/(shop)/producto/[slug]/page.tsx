@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: PageProps<"/producto/[slug]">
 export default function ProductPage({ params }: PageProps<"/producto/[slug]">) {
   return (
     <div className="wrap py-8 md:py-12">
-      <Link href="/" className="mb-6 inline-flex items-center gap-1 text-xs font-semibold text-ink-2 hover:text-accent">
+      <Link href="/tienda" className="mb-6 inline-flex items-center gap-1 text-xs font-semibold text-ink-2 hover:text-accent">
         <ChevronLeft className="size-4" /> Volver al catálogo
       </Link>
       <Suspense fallback={<div className="aspect-[2/1] animate-pulse rounded-sm bg-cream-2" />}>
@@ -43,9 +43,11 @@ async function ProductDetail({ params }: Pick<PageProps<"/producto/[slug]">, "pa
   return (
     <>
       <div className="grid gap-8 md:grid-cols-2 md:gap-12">
-        <ProductGallery images={product.images} name={product.name} />
+        <div className="animate-in">
+          <ProductGallery images={product.images} name={product.name} />
+        </div>
 
-        <div className="space-y-5">
+        <div className="animate-in space-y-5 [--delay:120ms]">
           {product.brand || product.category ? (
             <p className="text-[11px] font-bold tracking-[.14em] text-accent uppercase">
               {[product.brand, product.category].filter(Boolean).join(" · ")}
@@ -82,7 +84,7 @@ async function ProductDetail({ params }: Pick<PageProps<"/producto/[slug]">, "pa
 
       {related.length ? (
         <section className="mt-16 border-t border-line pt-10">
-          <h2 className="mb-6 font-display text-3xl">También te puede interesar</h2>
+          <h2 data-reveal className="mb-6 font-display text-3xl">También te puede interesar</h2>
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
             {related.map((p) => (
               <ProductCard key={p.id} product={p} />

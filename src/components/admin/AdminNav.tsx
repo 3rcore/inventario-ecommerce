@@ -10,22 +10,22 @@ const LINKS = [
   { href: "/admin/importar", label: "Importar" },
 ];
 
-export function AdminNav() {
+export function AdminNav({ className = "hidden md:flex" }: { className?: string }) {
   // usePathname es dato de runtime: con Cache Components va dentro de Suspense.
   return (
-    <Suspense fallback={<NavLinks pathname="" />}>
-      <ActiveNav />
+    <Suspense fallback={<NavLinks pathname="" className={className} />}>
+      <ActiveNav className={className} />
     </Suspense>
   );
 }
 
-function ActiveNav() {
-  return <NavLinks pathname={usePathname()} />;
+function ActiveNav({ className }: { className: string }) {
+  return <NavLinks pathname={usePathname()} className={className} />;
 }
 
-function NavLinks({ pathname }: { pathname: string }) {
+function NavLinks({ pathname, className }: { pathname: string; className: string }) {
   return (
-    <nav className="hidden items-center gap-5 text-[13px] font-semibold md:flex">
+    <nav className={`items-center gap-5 text-[13px] font-semibold ${className}`}>
       {LINKS.map((l) => {
         const active = l.href === "/admin" ? pathname === "/admin" : pathname.startsWith(l.href);
         return (

@@ -9,7 +9,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
   const href = `/producto/${product.slug}`;
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-sm border border-line bg-surface transition hover:-translate-y-1 hover:shadow-card">
+    <article data-reveal className="group relative flex flex-col overflow-hidden rounded-sm border border-line bg-surface transition hover:-translate-y-1 hover:shadow-card">
       <Link href={href} className="relative block aspect-square overflow-hidden bg-cream-2" aria-label={product.name}>
         <ProductImage
           src={product.images[0]}
