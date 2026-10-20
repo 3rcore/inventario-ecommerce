@@ -25,10 +25,10 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       onClick={toggle}
       aria-label="Cambiar entre modo claro y oscuro"
       title="Modo claro / oscuro"
-      className={`flex size-10 shrink-0 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent hover:text-accent ${className}`}
+      className={`group flex size-10 shrink-0 items-center justify-center rounded-full border border-line text-ink transition-colors hover:border-accent hover:text-accent ${className}`}
     >
-      <Moon className="size-[18px] dark:hidden" aria-hidden />
-      <Sun className="hidden size-[18px] dark:block" aria-hidden />
+      <Moon className="size-[18px] transition-transform duration-300 group-hover:-rotate-12 dark:hidden" aria-hidden />
+      <Sun className="hidden size-[18px] transition-transform duration-500 group-hover:rotate-90 dark:block" aria-hidden />
     </button>
   );
 }

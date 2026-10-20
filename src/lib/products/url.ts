@@ -1,5 +1,7 @@
 import type { CatalogFilters } from "./types";
 
+export const CATALOG_PATH = "/tienda";
+
 type Patch = Partial<Omit<CatalogFilters, "page">> & { page?: number };
 
 /**
@@ -20,7 +22,7 @@ export function catalogHref(current: CatalogFilters, patch: Patch = {}) {
   if (next.page > 1) params.set("pagina", String(next.page));
 
   const qs = params.toString();
-  return qs ? `/?${qs}` : "/";
+  return qs ? `${CATALOG_PATH}?${qs}` : CATALOG_PATH;
 }
 
 export const hasActiveFilters = (f: CatalogFilters) =>

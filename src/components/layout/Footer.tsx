@@ -14,13 +14,16 @@ export function Footer() {
           <p className="mb-4 text-xs font-bold tracking-[.14em] text-white uppercase">Tienda</p>
           <ul className="space-y-2 text-sm">
             <li>
-              <Link href="/" className="hover:text-white">Catálogo</Link>
+              <Link href="/" className="hover:text-white">Inicio</Link>
             </li>
             <li>
-              <Link href="/?oferta=1" className="hover:text-white">Ofertas</Link>
+              <Link href="/tienda" className="hover:text-white">Catálogo</Link>
             </li>
             <li>
-              <Link href="/?orden=recientes" className="hover:text-white">Novedades</Link>
+              <Link href="/tienda?oferta=1" className="hover:text-white">Ofertas</Link>
+            </li>
+            <li>
+              <Link href="/tienda?orden=recientes" className="hover:text-white">Novedades</Link>
             </li>
           </ul>
         </div>

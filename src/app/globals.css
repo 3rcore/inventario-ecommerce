@@ -162,3 +162,46 @@
     filter: brightness(0.92);
   }
 }
+
+/* --------------------------------------------------------------------------
+   Animaciones (solo CSS, sin JavaScript)
+   - .animate-in      → entrada al cargar (hero, títulos). Retraso con [--delay:120ms].
+   - [data-reveal]    → aparece al entrar en pantalla, ligado al scroll (view timeline).
+     En navegadores sin soporte el contenido simplemente se ve, sin animación.
+   Usan `transform`, que no choca con las utilidades hover de Tailwind (`translate`/`scale`).
+   Todo se desactiva si el usuario pidió reducir movimiento.
+   -------------------------------------------------------------------------- */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-in {
+    animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0ms) both;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @supports (animation-timeline: view()) {
+    [data-reveal] {
+      animation: fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 28%;
+    }
+  }
+}
