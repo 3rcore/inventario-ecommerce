@@ -13,7 +13,7 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 export default function EditProductPage({ params }: PageProps<"/admin/productos/[id]">) {
   return (
-    <Suspense fallback={<div className="h-96 animate-pulse rounded-sm bg-white" />}>
+    <Suspense fallback={<div className="h-96 animate-pulse rounded-sm bg-surface" />}>
       <EditProduct params={params} />
     </Suspense>
   );

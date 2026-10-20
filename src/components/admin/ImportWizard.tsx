@@ -278,7 +278,7 @@ export function ImportWizard() {
 /* ------------------------------------------------------------------ */
 
 function Panel({ children }: { children: React.ReactNode }) {
-  return <section className="rounded-sm border border-line bg-white p-5 md:p-6">{children}</section>;
+  return <section className="rounded-sm border border-line bg-surface p-5 md:p-6">{children}</section>;
 }
 
 function DropZone({

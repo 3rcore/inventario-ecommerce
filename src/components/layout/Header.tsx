@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { LayoutDashboard, Search } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-line bg-surface/95 backdrop-blur">
       <div className="wrap flex h-[70px] items-center justify-between gap-4 lg:h-[82px]">
         <Link href="/" aria-label="Ir al catálogo" className="shrink-0">
           <Logo eager className="h-[37px] w-auto lg:h-[42px]" />
@@ -21,10 +22,11 @@ export function Header() {
           />
         </form>
 
-        <nav className="flex items-center gap-6 text-[13.5px] font-semibold text-ink">
+        <nav className="flex items-center gap-3 text-[13.5px] font-semibold text-ink sm:gap-5">
           <Link href="/" className="transition-colors hover:text-accent">
             Catálogo
           </Link>
+          <ThemeToggle />
           <Link href="/admin" className="btn btn-primary rounded-full! px-4! py-2.5!">
             <LayoutDashboard className="size-4" />
             <span className="hidden sm:inline">Administrar</span>

@@ -7,6 +7,7 @@ import { AdminNav } from "@/components/admin/AdminNav";
 import { isAdmin } from "@/lib/auth";
 import { Logo } from "@/components/ui/Logo";
 import { SetupNotice } from "@/components/ui/SetupNotice";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { siteConfig } from "@/config/site";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
 import { createSessionClient } from "@/lib/supabase/server";
@@ -17,7 +18,7 @@ export default function AdminLayout({ children }: LayoutProps<"/admin">) {
   return (
     <div className="flex min-h-full flex-1 flex-col bg-cream-2">
       <SetupNotice />
-      <header className="border-b border-line bg-white">
+      <header className="border-b border-line bg-surface">
         <div className="wrap flex h-16 items-center justify-between gap-4">
           <div className="flex items-center gap-6">
             <Link href="/admin" className="flex items-center gap-3">
@@ -30,6 +31,7 @@ export default function AdminLayout({ children }: LayoutProps<"/admin">) {
             <Link href="/" target="_blank" className="hidden items-center gap-1 font-semibold hover:text-accent sm:inline-flex">
               Ver tienda <ExternalLink className="size-3.5" />
             </Link>
+            <ThemeToggle className="size-9!" />
             <Suspense>
               <UserMenu />
             </Suspense>
@@ -37,7 +39,7 @@ export default function AdminLayout({ children }: LayoutProps<"/admin">) {
         </div>
       </header>
       <main className="wrap flex-1 py-8">
-        <Suspense fallback={<div className="h-64 animate-pulse rounded-sm bg-white" />}>
+        <Suspense fallback={<div className="h-64 animate-pulse rounded-sm bg-surface" />}>
           <RequireSession>{children}</RequireSession>
         </Suspense>
       </main>

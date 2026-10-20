@@ -94,7 +94,7 @@ export function ProductForm({ product, categories }: Props) {
 
 function Card({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="space-y-4 rounded-sm border border-line bg-white p-5 md:p-6">
+    <section className="space-y-4 rounded-sm border border-line bg-surface p-5 md:p-6">
       <h2 className="text-xs font-bold tracking-[.14em] uppercase">{title}</h2>
       {children}
     </section>

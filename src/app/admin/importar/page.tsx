@@ -29,7 +29,7 @@ export default function ImportPage() {
 
       <ImportWizard />
 
-      <details className="rounded-sm border border-line bg-white p-5 md:p-6">
+      <details className="rounded-sm border border-line bg-surface p-5 md:p-6">
         <summary className="cursor-pointer text-xs font-bold tracking-[.14em] text-ink uppercase">Formato de columnas</summary>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full min-w-[560px] text-left text-sm">

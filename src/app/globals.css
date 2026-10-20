@@ -1,25 +1,73 @@
 @import "tailwindcss";
 
-/* Paleta de marca 3R Core. Para un cliente, cambia estos tokens (y el logo en public/brand). */
-@theme {
-  --color-cream: #ffffff;
-  --color-cream-2: #faf7fb;
-  --color-ink: #130218; /* noche 3R Core: textos y fondos oscuros */
-  --color-ink-2: #5c4f63;
-  --color-accent: #a21f8a; /* magenta 3R Core */
-  --color-accent-soft: #f8e8f4;
-  --color-gold: #ff2e88;
-  --color-clay: #ff2e88;
-  --color-sale: #e91e63;
-  --color-line: #ece4ef;
-  --color-banner: #f6e9f3; /* banner claro (mismo estilo Ducas, tono 3R Core) */
-  --color-danger: #c81e3a;
-  --color-success: #1f8a54;
+/* Paleta de marca 3R Core. Para un cliente, cambia estos valores (y el logo en src/assets/brand).
+   Cada color tiene versión clara y oscura; las utilidades (bg-surface, text-ink…) leen la variable. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  color-scheme: light;
+  --cream: #ffffff; /* fondo de página */
+  --cream-2: #faf7fb; /* fondos suaves, imágenes */
+  --surface: #ffffff; /* tarjetas, inputs, paneles */
+  --ink: #130218; /* textos fuertes */
+  --ink-2: #5c4f63; /* textos secundarios */
+  --night: #130218; /* fondo oscuro fijo: footer y badges */
+  --primary: #130218; /* botón principal */
+  --primary-hover: #a21f8a;
+  --accent: #a21f8a; /* magenta 3R Core */
+  --accent-soft: #f8e8f4;
+  --pink: #ff2e88;
+  --sale: #e91e63;
+  --line: #ece4ef;
+  --banner: #f6e9f3;
+  --danger: #c81e3a;
+  --success: #1f8a54;
+  --card-shadow: rgb(162 31 138 / 0.35);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --cream: #0d0010;
+  --cream-2: #1a0820;
+  --surface: #16021b;
+  --ink: #f6eff8;
+  --ink-2: #b8a9bf;
+  --night: #08000a;
+  --primary: #a21f8a;
+  --primary-hover: #c42da8;
+  --accent: #e46bd0; /* más claro para mantener contraste sobre fondo oscuro */
+  --accent-soft: #2c0d2c;
+  --pink: #ff5c9e;
+  --sale: #f0447e;
+  --line: #2e1a35;
+  --banner: #1f0a24;
+  --danger: #ff6b81;
+  --success: #4cc98a;
+  --card-shadow: rgb(0 0 0 / 0.6);
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-cream-2: var(--cream-2);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-night: var(--night);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-gold: var(--pink);
+  --color-clay: var(--pink);
+  --color-sale: var(--sale);
+  --color-line: var(--line);
+  --color-banner: var(--banner);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
 
   --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-cormorant), ui-serif, Georgia, serif;
 
-  --shadow-card: 0 20px 50px -26px rgb(162 31 138 / 0.35);
+  --shadow-card: 0 20px 50px -26px var(--card-shadow);
 }
 
 @layer base {
@@ -27,7 +75,7 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-cream font-sans font-medium text-ink-2 antialiased;
+    @apply bg-cream font-sans font-medium text-ink-2 antialiased transition-colors duration-200;
   }
   h1,
   h2,
@@ -58,7 +106,7 @@
   width: 100%;
   border-radius: 0.25rem;
   border: 1px solid var(--color-line);
-  background: white;
+  background: var(--color-surface);
   padding: 0.55rem 0.75rem;
   font-size: 0.875rem;
   color: var(--color-ink);
@@ -91,16 +139,16 @@
 }
 
 @utility btn-primary {
-  background: var(--color-ink);
+  background: var(--primary);
   color: white;
   &:hover:not(:disabled) {
-    background: var(--color-accent);
+    background: var(--primary-hover);
   }
 }
 
 @utility btn-outline {
   border: 1px solid var(--color-line);
-  background: white;
+  background: var(--color-surface);
   color: var(--color-ink);
   &:hover:not(:disabled) {
     border-color: var(--color-accent);

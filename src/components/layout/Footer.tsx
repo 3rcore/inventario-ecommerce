@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/site";
 
 export function Footer() {
   return (
-    <footer className="mt-auto bg-ink text-[#d8cddc]">
+    <footer className="mt-auto bg-night text-[#d8cddc]">
       <div className="wrap grid gap-10 py-14 md:grid-cols-[1.7fr_1fr_1fr]">
         <div className="space-y-4">
           <Logo variant="white" className="h-11 w-auto" />

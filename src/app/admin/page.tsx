@@ -64,7 +64,7 @@ async function AdminProducts({ searchParams }: Pick<PageProps<"/admin">, "search
         <input name="q" type="search" defaultValue={q} placeholder="Buscar por nombre, SKU o categoría" className="field pl-9" />
       </form>
 
-      <div className="overflow-x-auto rounded-sm border border-line bg-white">
+      <div className="overflow-x-auto rounded-sm border border-line bg-surface">
         <table className="w-full min-w-[760px] text-left text-sm">
           <thead className="border-b border-line bg-cream-2 text-[11px] tracking-wider text-ink uppercase">
             <tr>
@@ -128,7 +128,7 @@ async function AdminProducts({ searchParams }: Pick<PageProps<"/admin">, "search
 
 function Stat({ label, value, tone }: { label: string; value: number; tone?: "warn" }) {
   return (
-    <div className="rounded-sm border border-line bg-white px-4 py-3">
+    <div className="rounded-sm border border-line bg-surface px-4 py-3">
       <p className="text-[11px] tracking-wider uppercase">{label}</p>
       <p className={`text-2xl font-semibold ${tone === "warn" ? "text-sale" : "text-ink"}`}>{value}</p>
     </div>

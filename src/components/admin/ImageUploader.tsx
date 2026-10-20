@@ -72,11 +72,11 @@ export function ImageUploader({ name, defaultValue = [], error }: Props) {
           <div key={url} className="group relative aspect-square overflow-hidden rounded-sm border border-line bg-cream-2">
             <ProductImage src={url} alt={`Imagen ${i + 1}`} sizes="160px" />
             {i === 0 ? (
-              <span className="absolute top-1.5 left-1.5 rounded-sm bg-ink px-1.5 py-0.5 text-[9px] font-bold tracking-wider text-white uppercase">
+              <span className="absolute top-1.5 left-1.5 rounded-sm bg-night px-1.5 py-0.5 text-[9px] font-bold tracking-wider text-white uppercase">
                 Principal
               </span>
             ) : null}
-            <div className="absolute inset-x-0 bottom-0 flex justify-between bg-white/90 p-1 opacity-0 transition group-focus-within:opacity-100 group-hover:opacity-100">
+            <div className="absolute inset-x-0 bottom-0 flex justify-between bg-surface/90 p-1 opacity-0 transition group-focus-within:opacity-100 group-hover:opacity-100">
               <IconButton label="Mover a la izquierda" disabled={i === 0} onClick={() => move(i, i - 1)}>
                 <ArrowLeft className="size-3.5" />
               </IconButton>

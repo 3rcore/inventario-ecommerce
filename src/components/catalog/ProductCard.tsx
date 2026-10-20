@@ -9,7 +9,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
   const href = `/producto/${product.slug}`;
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-sm border border-line bg-white transition hover:-translate-y-1 hover:shadow-card">
+    <article className="group relative flex flex-col overflow-hidden rounded-sm border border-line bg-surface transition hover:-translate-y-1 hover:shadow-card">
       <Link href={href} className="relative block aspect-square overflow-hidden bg-cream-2" aria-label={product.name}>
         <ProductImage
           src={product.images[0]}
@@ -24,11 +24,11 @@ export function ProductCard({ product, priority = false }: { product: Product; p
           </span>
         ) : null}
         {outOfStock ? (
-          <span className="absolute top-3 right-3 rounded-sm bg-white/90 px-2.5 py-1 text-[10px] font-semibold tracking-wider text-ink uppercase">
+          <span className="absolute top-3 right-3 rounded-sm bg-surface/90 px-2.5 py-1 text-[10px] font-semibold tracking-wider text-ink uppercase">
             Agotado
           </span>
         ) : null}
-        <span className="absolute inset-x-0 bottom-0 flex translate-y-full justify-center bg-white/70 py-3 text-[11px] font-bold tracking-[0.08em] text-ink uppercase opacity-0 backdrop-blur transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+        <span className="absolute inset-x-0 bottom-0 flex translate-y-full justify-center bg-surface/70 py-3 text-[11px] font-bold tracking-[0.08em] text-ink uppercase opacity-0 backdrop-blur transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
           Ver producto
         </span>
       </Link>

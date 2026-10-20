@@ -23,7 +23,7 @@ export function ToggleActive({ id, active }: { id: string; active: boolean }) {
       aria-label={optimistic ? "Ocultar de la tienda" : "Publicar en la tienda"}
       onClick={toggle}
       disabled={isPending}
-      className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${optimistic ? "bg-accent" : "bg-line"}`}
+      className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${optimistic ? "bg-primary" : "bg-line"}`}
     >
       <span className={`inline-block size-4 rounded-full bg-white shadow transition-transform ${optimistic ? "translate-x-4.5" : "translate-x-0.5"}`} />
     </button>
