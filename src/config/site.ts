@@ -2,7 +2,7 @@
  * Datos de marca del inventario. Cambia estos valores para cada cliente.
  */
 export const siteConfig = {
-  name: "Inventario Modelo",
+  name: "Inventario 3R Core",
   shortName: "Inventario",
   description:
     "Catálogo e inventario online: sube tus productos uno por uno o en lote desde Excel o CSV.",

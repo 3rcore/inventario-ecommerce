@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { LayoutDashboard, Search } from "lucide-react";
-import { siteConfig } from "@/config/site";
+import { Logo } from "@/components/ui/Logo";
 
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur">
       <div className="wrap flex h-[70px] items-center justify-between gap-4 lg:h-[82px]">
-        <Link href="/" className="font-display text-2xl font-semibold tracking-tight text-ink lg:text-[28px]">
-          {siteConfig.name}
+        <Link href="/" aria-label="Ir al catálogo" className="shrink-0">
+          <Logo eager className="h-[37px] w-auto lg:h-[42px]" />
         </Link>
 
         <form action="/" className="relative hidden max-w-sm flex-1 md:block" role="search">

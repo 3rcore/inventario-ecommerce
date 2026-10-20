@@ -9,7 +9,7 @@ export function ProductGallery({ images, name }: { images: string[]; name: strin
   return (
     <div className="space-y-3">
       <div className="relative aspect-square overflow-hidden rounded-sm border border-line bg-cream-2">
-        <ProductImage src={images[active]} alt={name} sizes="(min-width: 768px) 50vw, 100vw" priority />
+        <ProductImage src={images[active]} alt={name} sizes="(min-width: 768px) 50vw, 100vw" priority={active === 0} />
       </div>
       {images.length > 1 ? (
         <div className="grid grid-cols-5 gap-2">

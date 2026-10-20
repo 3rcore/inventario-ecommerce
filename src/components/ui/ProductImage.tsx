@@ -32,7 +32,8 @@ export function ProductImage({ src, alt, sizes, className = "", priority }: Prop
       alt={alt}
       fill
       sizes={sizes}
-      priority={priority}
+      loading={priority ? "eager" : undefined}
+      fetchPriority={priority ? "high" : undefined}
       unoptimized={!isOwnStorage}
       className={`object-cover ${className}`}
     />

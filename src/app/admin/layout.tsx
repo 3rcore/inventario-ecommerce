@@ -5,6 +5,7 @@ import { ExternalLink } from "lucide-react";
 import { signOut } from "@/app/actions/auth";
 import { AdminNav } from "@/components/admin/AdminNav";
 import { isAdmin } from "@/lib/auth";
+import { Logo } from "@/components/ui/Logo";
 import { SetupNotice } from "@/components/ui/SetupNotice";
 import { siteConfig } from "@/config/site";
 import { isSupabaseConfigured } from "@/lib/supabase/env";
@@ -19,8 +20,9 @@ export default function AdminLayout({ children }: LayoutProps<"/admin">) {
       <header className="border-b border-line bg-white">
         <div className="wrap flex h-16 items-center justify-between gap-4">
           <div className="flex items-center gap-6">
-            <Link href="/admin" className="font-display text-xl font-semibold text-ink">
-              {siteConfig.shortName} <span className="text-accent">· Panel</span>
+            <Link href="/admin" className="flex items-center gap-3">
+              <Logo eager className="h-8 w-auto" />
+              <span className="border-l border-line pl-3 font-display text-xl font-semibold text-accent">Panel</span>
             </Link>
             <AdminNav />
           </div>

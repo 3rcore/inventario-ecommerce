@@ -1,25 +1,25 @@
 @import "tailwindcss";
 
-/* Paleta inspirada en Ducas Import. Cambia estos tokens para adaptar la marca de cada cliente. */
+/* Paleta de marca 3R Core. Para un cliente, cambia estos tokens (y el logo en public/brand). */
 @theme {
   --color-cream: #ffffff;
-  --color-cream-2: #f9f8f6;
-  --color-ink: #435547;
-  --color-ink-2: #5e665c;
-  --color-accent: #5b6b4e;
-  --color-accent-soft: #eaede4;
-  --color-gold: #c6b088;
-  --color-clay: #bfa282;
-  --color-sale: #8c5648;
-  --color-line: #e7e2d9;
-  --color-banner: #dce4d7;
-  --color-danger: #b42318;
-  --color-success: #2f7a4a;
+  --color-cream-2: #faf7fb;
+  --color-ink: #130218; /* noche 3R Core: textos y fondos oscuros */
+  --color-ink-2: #5c4f63;
+  --color-accent: #a21f8a; /* magenta 3R Core */
+  --color-accent-soft: #f8e8f4;
+  --color-gold: #ff2e88;
+  --color-clay: #ff2e88;
+  --color-sale: #e91e63;
+  --color-line: #ece4ef;
+  --color-banner: #f6e9f3; /* banner claro (mismo estilo Ducas, tono 3R Core) */
+  --color-danger: #c81e3a;
+  --color-success: #1f8a54;
 
   --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-cormorant), ui-serif, Georgia, serif;
 
-  --shadow-card: 0 20px 50px -26px rgb(50 60 50 / 0.2);
+  --shadow-card: 0 20px 50px -26px rgb(162 31 138 / 0.35);
 }
 
 @layer base {

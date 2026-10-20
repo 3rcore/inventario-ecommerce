@@ -2,7 +2,7 @@
 
 Catálogo público + panel de inventario para que cada cliente suba sus productos **uno por uno o por lote desde Excel/CSV**, con imágenes en **Supabase Storage**. Pensado como demo comercial de 3R Core.
 
-**Stack:** Next.js 16 (App Router, Cache Components) · React 19 · TypeScript · Tailwind CSS 4 · Supabase (Postgres + Auth + Storage) · Zod · PapaParse · SheetJS.
+**Stack:** pnpm · Next.js 16 (App Router, Cache Components) · React 19 · TypeScript · Tailwind CSS 4 · Supabase (Postgres + Auth + Storage) · Zod · PapaParse · SheetJS.
 
 ## Funcionalidades
 
@@ -28,9 +28,9 @@ Catálogo público + panel de inventario para que cada cliente suba sus producto
 ## Puesta en marcha
 
 ```bash
-npm install
+pnpm install
 cp .env.example .env.local   # completar con los datos de Supabase
-npm run dev
+pnpm dev
 ```
 
 Sin las variables de Supabase, la web arranca en "modo demo": muestra un aviso y el catálogo aparece vacío.

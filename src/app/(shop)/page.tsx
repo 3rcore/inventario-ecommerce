@@ -14,13 +14,13 @@ export default function CatalogPage({ searchParams }: PageProps<"/">) {
   return (
     <>
       <section className="relative overflow-hidden bg-banner">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_30%,#eef2ea_0,transparent_55%)]" aria-hidden />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_30%,#fbf3f9_0,transparent_55%)]" aria-hidden />
         <div className="wrap relative flex min-h-[260px] flex-col justify-center py-14 md:min-h-[340px]">
-          <p className="eyebrow text-[#4a5545]">Catálogo</p>
-          <h1 className="mt-3 font-display text-[clamp(34px,5.5vw,60px)] leading-[1.05] font-medium text-[#1c2419]">
+          <p className="eyebrow text-accent">Catálogo</p>
+          <h1 className="mt-3 font-display text-[clamp(34px,5.5vw,60px)] leading-[1.05] font-medium text-ink">
             Todos nuestros productos
           </h1>
-          <p className="mt-4 max-w-[46ch] text-[#3b4636]">{siteConfig.description}</p>
+          <p className="mt-4 max-w-[46ch] text-ink-2">{siteConfig.description}</p>
         </div>
       </section>
 
