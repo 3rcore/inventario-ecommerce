@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+/* Paleta inspirada en Ducas Import. Cambia estos tokens para adaptar la marca de cada cliente. */
+@theme {
+  --color-cream: #ffffff;
+  --color-cream-2: #f9f8f6;
+  --color-ink: #435547;
+  --color-ink-2: #5e665c;
+  --color-accent: #5b6b4e;
+  --color-accent-soft: #eaede4;
+  --color-gold: #c6b088;
+  --color-clay: #bfa282;
+  --color-sale: #8c5648;
+  --color-line: #e7e2d9;
+  --color-banner: #dce4d7;
+  --color-danger: #b42318;
+  --color-success: #2f7a4a;
+
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-cormorant), ui-serif, Georgia, serif;
+
+  --shadow-card: 0 20px 50px -26px rgb(50 60 50 / 0.2);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream font-sans font-medium text-ink-2 antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply text-ink;
+  }
+  ::selection {
+    @apply bg-gold text-white;
+  }
+}
+
+@utility wrap {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 5vw, 64px);
+}
+
+@utility eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Controles de formulario reutilizables (panel admin y filtros) */
+@utility field {
+  width: 100%;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-line);
+  background: white;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-ink);
+  outline: none;
+  transition: border-color 150ms;
+  &:focus {
+    border-color: var(--color-accent);
+  }
+  &[aria-invalid="true"] {
+    border-color: var(--color-danger);
+  }
+}
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.25rem;
+  padding: 0.65rem 1.1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: background-color 150ms, color 150ms, border-color 150ms;
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+@utility btn-primary {
+  background: var(--color-ink);
+  color: white;
+  &:hover:not(:disabled) {
+    background: var(--color-accent);
+  }
+}
+
+@utility btn-outline {
+  border: 1px solid var(--color-line);
+  background: white;
+  color: var(--color-ink);
+  &:hover:not(:disabled) {
+    border-color: var(--color-accent);
+  }
+}
+
+@utility btn-danger {
+  background: var(--color-danger);
+  color: white;
+  &:hover:not(:disabled) {
+    filter: brightness(0.92);
+  }
+}
